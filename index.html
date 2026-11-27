@@ -2088,7 +2088,7 @@
       { title: 'Ted Lasso', wiki: 'Ted Lasso', genre: 'دراما وإلهام', year: 2020, rating: '8.8', desc: 'مدرب كرة قدم أمريكي متفائل ينتقل لتدريب فريق إنجليزي فينشر اللطف والإيجابية في قلوب الجميع.' }
     ];
 
-    const ALL_CINEMA_LIST = (() => {
+   const ALL_CINEMA_LIST = (() => {
       const palettes = [
         'from-orange-500 via-red-600 to-blue-900',
         'from-blue-700 via-indigo-800 to-rose-600',
@@ -2098,11 +2098,12 @@
       ];
       const list = [];
 
-       for (let i = 0; i <REAL_MOVIES_CATALOG.length; i++) {
-        const base = REAL_MOVIES_CATALOG[i % REAL_MOVIES_CATALOG.length];
+      // التأكد من ملء القائمة بالأفلام الفريدة دون تكرار
+      for (let i = 0; i < REAL_MOVIES_CATALOG.length; i++) {
+        const base = REAL_MOVIES_CATALOG[i];
         list.push({
           id: `mov_${i + 1}`,
-          title: i < REAL_MOVIES_CATALOG.length ? base.title : `${base.title} — ترشيح Seraina #${i + 1}`,
+          title: base.title,
           wikiTitle: base.wiki,
           itunesTerm: base.title,
           type: 'فيلم',
@@ -2111,24 +2112,25 @@
           rating: base.rating,
           palette: palettes[i % palettes.length],
           desc: base.desc
-          });
+        });
       }
 
-       for (let i = 0; i <0; i) {
-        const base = REAL_SERIES_CATALOG[i % REAL_SERIES_CATALOG.length];
+      for (let i = 0; i < REAL_SERIES_CATALOG.length; i++) {
+        const base = REAL_SERIES_CATALOG[i];
         list.push({
           id: `ser_${i + 1}`,
-          title: i < REAL_SERIES_CATALOG.length ? base.title : `${base.title} — موسم مختار #${i + 1}`,
+          title: base.title,
           wikiTitle: base.wiki,
           itunesTerm: base.title,
           type: 'مسلسل',
           genre: base.genre,
           year: base.year,
           rating: base.rating,
-          palette: palettes[(i + 2) % palettes.length],
+          palette: palettes[i % palettes.length],
           desc: base.desc
         });
       }
+
       return list;
     })();
 
