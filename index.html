@@ -2088,7 +2088,7 @@
       { title: 'Ted Lasso', wiki: 'Ted Lasso', genre: 'دراما وإلهام', year: 2020, rating: '8.8', desc: 'مدرب كرة قدم أمريكي متفائل ينتقل لتدريب فريق إنجليزي فينشر اللطف والإيجابية في قلوب الجميع.' }
     ];
 
-   const ALL_CINEMA_LIST = (() => {
+const ALL_CINEMA_LIST = (() => {
       const palettes = [
         'from-orange-500 via-red-600 to-blue-900',
         'from-blue-700 via-indigo-800 to-rose-600',
@@ -2098,7 +2098,7 @@
       ];
       const list = [];
 
-      // التأكد من ملء القائمة بالأفلام الفريدة دون تكرار
+      // حلقة إضافة الأفلام الفريدة دون تكرار
       for (let i = 0; i < REAL_MOVIES_CATALOG.length; i++) {
         const base = REAL_MOVIES_CATALOG[i];
         list.push({
@@ -2115,6 +2115,7 @@
         });
       }
 
+      // حلقة إضافة المسلسلات الفريدة دون تكرار
       for (let i = 0; i < REAL_SERIES_CATALOG.length; i++) {
         const base = REAL_SERIES_CATALOG[i];
         list.push({
